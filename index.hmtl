@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pizzaria Schuelter | Manoel Ribas - PR</title>
+
+    <meta
+        name="description"
+        content="Pizzaria Schuelter - A pizza que reúne a gente. Peça sua pizza em Manoel Ribas."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <a href="#inicio" class="logo">
+
+                <div class="logo-circle">
+                    🍕
+                </div>
+
+                <div class="logo-text">
+                    <strong>Schuelter</strong>
+                    <small>PIZZARIA & HAMBURGUERIA</small>
+                </div>
+
+            </a>
+
+
+            <nav class="desktop-menu">
+
+                <a href="#inicio">Início</a>
+                <a href="#destaques">Destaques</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#sobre">Sobre nós</a>
+                <a href="#contato">Contato</a>
+
+            </nav>
+
+
+            <a href="#cardapio" class="nav-order">
+                Pedir agora 🍕
+            </a>
+
+
+            <button class="menu-button" id="menuButton">
+                ☰
+            </button>
+
+        </div>
+
+
+        <!-- MENU MOBILE -->
+
+        <div class="mobile-menu" id="mobileMenu">
+
+            <a href="#inicio">Início</a>
+            <a href="#destaques">Destaques</a>
+            <a href="#cardapio">Cardápio</a>
+            <a href="#sobre">Sobre nós</a>
+            <a href="#contato">Contato</a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-glow"></div>
+
+            <div class="container hero-grid">
+
+
+                <!-- TEXTO -->
+
+                <div class="hero-content">
+
+                    <div class="location-badge">
+
+                        <span class="pulse"></span>
+
+                        📍 Manoel Ribas - PR
+
+                    </div>
+
+
+                    <h1>
+
+                        A pizza que
+
+                        <span>reúne</span>
+
+                        a gente.
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Massa deliciosa, recheio caprichado
+                        e aquele sabor que transforma qualquer
+                        noite em um momento especial.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#cardapio"
+                            class="btn btn-primary"
+                        >
+                            🍕 Ver cardápio
+                        </a>
+
+
+                        <a
+                            href="#destaques"
+                            class="btn btn-secondary"
+                        >
+                            🔥 Mais pedidos
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-info">
+
+                        <div>
+
+                            <strong>
+                                18:00 — 23:30
+                            </strong>
+
+                            <span>
+                                Todos os dias
+                            </span>
+
+                        </div>
+
+
+                        <div class="divider"></div>
+
+
+                        <div>
+
+                            <strong>
+                                R$ 20
+                            </strong>
+
+                            <span>
+                                Pedido mínimo
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PIZZA -->
+
+                <div class="hero-pizza">
+
+                    <div class="pizza-card">
+
+                        <div class="pizza-badge">
+                            🔥 A queridinha da cidade
+                        </div>
+
+
+                        <img
+                            src="assets/pizza-principal.jpg"
+                            alt="Pizza Schuelter"
+                            class="pizza-image"
+                        >
+
+
+                        <div class="pizza-card-info">
+
+                            <div>
+
+                                <span class="small-label">
+                                    PIZZA SCHUELTER
+                                </span>
+
+                                <h2>
+                                    Feita para
+                                    <span>compartilhar.</span>
+                                </h2>
+
+                            </div>
+
+
+                            <div class="pizza-rating">
+
+                                ★★★★★
+
+                                <small>
+                                    Favorita da galera
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ingredient ingredient-one">
+                        🧀
+                    </div>
+
+                    <div class="ingredient ingredient-two">
+                        🌶️
+                    </div>
+
+                    <div class="ingredient ingredient-three">
+                        🍅
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                <span>
+                    Role para descobrir
+                </span>
+
+                ↓
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MARQUEE ================= -->
+
+        <section class="marquee">
+
+            <div class="marquee-track">
+
+                <span>
+                    🍕 PIZZA ARTESANAL
+                </span>
+
+                <span>
+                    ★ FEITA COM CARINHO
+                </span>
+
+                <span>
+                    🔥 MUITO RECHEIO
+                </span>
+
+                <span>
+                    ❤️ MANOEL RIBAS
+                </span>
+
+                <span>
+                    🍕 PIZZA ARTESANAL
+                </span>
+
+                <span>
+                    ★ FEITA COM CARINHO
+                </span>
+
+                <span>
+                    🔥 MUITO RECHEIO
+                </span>
+
+                <span>
+                    ❤️ MANOEL RIBAS
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= DESTAQUES ================= -->
+
+        <section
+            class="section"
+            id="destaques"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            🔥 OS QUERIDINHOS
+                        </span>
+
+                        <h2>
+                            Pedidos que
+                            <span>fazem sucesso.</span>
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Algumas escolhas simplesmente
+                        não têm erro. Confira os sabores
+                        que merecem um lugar na sua mesa.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="featured-grid">
+
+
+                    <!-- CALABRESA -->
+
+                    <article class="featured-card featured-main">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="assets/pizza-calabresa.jpg"
+                                alt="Pizza de calabresa"
+                            >
+
+                            <span class="tag">
+                                🔥 MAIS PEDIDA
+                            </span>
+
+                        </div>
+
+
+                        <div class="featured-info">
+
+                            <div>
+
+                                <h3>
+                                    Calabresa Especial
+                                </h3>
+
+                                <p>
+                                    Mussarela, calabresa,
+                                    cebola e orégano.
+                                </p>
+
+                            </div>
+
+
+                            <strong class="price">
+                                R$ 42,90
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            class="add-button"
+                            data-name="Calabresa Especial"
+                            data-price="42.90"
+                        >
+                            + Adicionar
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- FRANGO -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="assets/pizza-frango.jpg"
+                                alt="Pizza de frango com catupiry"
+                            >
+
+                            <span class="tag orange">
+                                ❤️ FAVORITA
+                            </span>
+
+                        </div>
+
+
+                        <div class="featured-info">
+
+                            <div>
+
+                                <h3>
+                                    Frango com Catupiry
+                                </h3>
+
+                                <p>
+                                    Frango temperado,
+                                    mussarela e catupiry.
+                                </p>
+
+                            </div>
+
+
+                            <strong class="price">
+                                R$ 49,90
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            class="add-button"
+                            data-name="Frango com Catupiry"
+                            data-price="49.90"
+                        >
+                            + Adicionar
+                        </button>
+
+                    </article>
+
+
+
+                    <!-- PORTUGUESA -->
+
+                    <article class="featured-card">
+
+                        <div class="featured-image">
+
+                            <img
+                                src="assets/pizza-portuguesa.jpg"
+                                alt="Pizza portuguesa"
+                            >
+
+                            <span class="tag yellow">
+                                ⭐ CLÁSSICA
+                            </span>
+
+                        </div>
+
+
+                        <div class="featured-info">
+
+                            <div>
+
+                                <h3>
+                                    Portuguesa
+                                </h3>
+
+                                <p>
+                                    Mussarela, presunto,
+                                    ovo, cebola e orégano.
+                                </p>
+
+                            </div>
+
+
+                            <strong class="price">
+                                R$ 47,90
+                            </strong>
+
+                        </div>
+
+
+                        <button
+                            class="add-button"
+                            data-name="Portuguesa"
+                            data-price="47.90"
+                        >
+                            + Adicionar
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PROMO ================= -->
+
+        <section class="promo">
+
+            <div class="container promo-box">
+
+                <div class="promo-decoration">
+                    🍕
+                </div>
+
+
+                <div class="promo-content">
+
+                    <span>
+                        HOJE É DIA DE PIZZA
+                    </span>
+
+
+                    <h2>
+
+                        Seu sofá.
+
+                        <br>
+
+                        Sua série.
+
+                        <br>
+
+                        <strong>
+                            Sua Schuelter.
+                        </strong>
+
+                    </h2>
+
+
+                    <p>
+                        Porque algumas noites pedem
+                        uma pizza caprichada.
+                    </p>
+
+
+                    <a
+                        href="#cardapio"
+                        class="btn btn-light"
+                    >
+                        Quero minha pizza →
+                    </a>
+
+                </div>
+
+
+                <div class="promo-pizza">
+
+                    <img
+                        src="assets/pizza-promo.jpg"
+                        alt="Pizza deliciosa"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CARDÁPIO ================= -->
+
+        <section
+            class="section menu-section"
+            id="cardapio"
+        >
+
+            <div class="container">
+
+                <div class="section-heading center">
+
+                    <span class="eyebrow">
+                        🍕 ESCOLHA SUA FOME
+                    </span>
+
+
+                    <h2>
+
+                        Nosso
+
+                        <span>
+                            cardápio.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+                        Escolha seus favoritos
+                        e monte seu pedido.
+                    </p>
+
+                </div>
+
+
+
+                <!-- CATEGORIAS -->
+
+                <div class="category-buttons">
+
+                    <button
+                        class="category active"
+                        data-category="pizzas"
+                    >
+                        🍕 Pizzas
+                    </button>
+
+
+                    <button
+                        class="category"
+                        data-category="hamburgueres"
+                    >
+                        🍔 Hambúrgueres
+                    </button>
+
+
+                    <button
+                        class="category"
+                        data-category="bebidas"
+                    >
+                        🥤 Bebidas
+                    </button>
+
+
+                    <button
+                        class="category"
+                        data-category="sobremesas"
+                    >
+                        🍫 Sobremesas
+                    </button>
+
+                </div>
+
+
+
+                <!-- PRODUTOS -->
+
+                <div
+                    class="menu-grid"
+                    id="menuGrid"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SOBRE ================= -->
+
+        <section
+            class="about"
+            id="sobre"
+        >
+
+            <div class="container about-grid">
+
+
+                <div class="about-images">
+
+                    <div class="about-image large">
+
+                        <img
+                            src="assets/pizzaria.jpg"
+                            alt="Pizzaria Schuelter"
+                        >
+
+                    </div>
+
+
+                    <div class="about-image small">
+
+                        <img
+                            src="assets/pizza-close.jpg"
+                            alt="Pizza Schuelter"
+                        >
+
+                    </div>
+
+
+                    <div class="about-sticker">
+
+                        ❤️
+
+                        <strong>
+                            Feito com carinho
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="about-content">
+
+                    <span class="eyebrow">
+                        ❤️ MAIS QUE UMA PIZZARIA
+                    </span>
+
+
+                    <h2>
+
+                        Uma noite boa
+
+                        <span>
+                            começa com pizza.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        A Schuelter faz parte das noites
+                        de Manoel Ribas.
+
+                        É aquele lugar para reunir a família,
+                        encontrar os amigos ou simplesmente
+                        pedir uma pizza porque bateu aquela fome.
+
+                    </p>
+
+
+                    <p>
+
+                        Nosso objetivo é simples:
+
+                        <strong>
+                            fazer você querer pedir de novo.
+                        </strong>
+
+                    </p>
+
+
+                    <div class="about-stats">
+
+                        <div>
+
+                            <strong>🍕</strong>
+
+                            <span>
+                                Pizza caprichada
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>❤️</strong>
+
+                            <span>
+                                Feita com carinho
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>🔥</strong>
+
+                            <span>
+                                Sempre quentinha
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="final-cta">
+
+            <div class="container">
+
+                <span class="eyebrow">
+                    E AÍ, VAI RESISTIR? 👀
+                </span>
+
+
+                <h2>
+
+                    Bateu aquela fome?
+
+                    <br>
+
+                    <span>
+                        Chama a Schuelter.
+                    </span>
+
+                </h2>
+
+
+                <p>
+                    Monte seu pedido e deixe
+                    o resto com a gente.
+                </p>
+
+
+                <a
+                    href="#cardapio"
+                    class="btn btn-primary big"
+                >
+                    🍕 PEDIR MINHA PIZZA
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CONTATO ================= -->
+
+        <section
+            class="contact"
+            id="contato"
+        >
+
+            <div class="container contact-grid">
+
+
+                <div>
+
+                    <span class="eyebrow">
+                        📍 ONDE ESTAMOS
+                    </span>
+
+
+                    <h2>
+
+                        Vem comer com
+
+                        <span>
+                            a gente.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        R. 7 de Setembro, 2500
+
+                        <br>
+
+                        Manoel Ribas - PR
+
+                    </p>
+
+
+                    <a
+                        class="contact-link"
+                        target="_blank"
+                        href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Schuelter+Manoel+Ribas+PR"
+                    >
+                        📍 Abrir no Google Maps →
+                    </a>
+
+                </div>
+
+
+
+                <div class="hours-card">
+
+                    <div class="hours-icon">
+                        🕐
+                    </div>
+
+
+                    <span>
+                        HORÁRIO DE FUNCIONAMENTO
+                    </span>
+
+
+                    <h3>
+                        Todos os dias
+                    </h3>
+
+
+                    <strong>
+                        18:00 — 23:30
+                    </strong>
+
+
+                    <small>
+                        Pedido mínimo: R$ 20,00
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <div class="footer-logo">
+
+                🍕
+
+                <strong>
+                    Schuelter
+                </strong>
+
+            </div>
+
+
+            <p>
+                A pizza que reúne a gente. ❤️
+            </p>
+
+
+            <div class="socials">
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    Facebook
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Pizzaria Schuelter
+            · Manoel Ribas - PR
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================= CARRINHO ================= -->
+
+    <aside
+        class="cart"
+        id="cart"
+    >
+
+        <div class="cart-header">
+
+            <div>
+
+                <span>
+                    SEU PEDIDO
+                </span>
+
+                <h3>
+                    🍕 Carrinho
+                </h3>
+
+            </div>
+
+
+            <button id="closeCart">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        >
+
+            <div class="empty-cart">
+
+                <div>
+                    🍕
+                </div>
+
+                <p>
+                    Seu carrinho está vazio.
+                </p>
+
+                <small>
+                    Adicione uma pizza deliciosa!
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-button"
+                id="checkoutButton"
+            >
+                Pedir agora pelo WhatsApp →
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- OVERLAY -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+
+    <!-- BOTÃO CARRINHO -->
+
+    <button
+        class="floating-cart"
+        id="floatingCart"
+    >
+
+        🛒
+
+        <span id="cartCount">
+            0
+        </span>
+
+    </button>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
