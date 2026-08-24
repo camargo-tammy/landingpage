@@ -1,213 +1,110 @@
 /* =========================================
    PIZZARIA SCHUELTER
-   JAVASCRIPT
 ========================================= */
 
 
 /* =========================================
-   CONFIGURAÇÕES
+   MENU MOBILE
 ========================================= */
 
+const menuMobile =
+    document.getElementById("menuMobile");
 
-/*
-    COLOQUE AQUI O NÚMERO DO WHATSAPP.
+const menu =
+    document.querySelector(".menu");
 
-    Exemplo:
 
-    5542999999999
+menuMobile.addEventListener("click", () => {
 
-    Sem:
-    +
-    espaços
-    parênteses
-    hífen
-*/
+    menu.classList.toggle("open");
 
-const WHATSAPP =
-    "COLOQUE_NUMERO_AQUI";
+});
 
+
+document
+    .querySelectorAll(".menu a")
+    .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            menu.classList.remove("open");
+
+        });
+
+    });
 
 
 /* =========================================
-   CARDÁPIO
+   FILTRO CARDÁPIO
 ========================================= */
 
-const menu = {
+const categories =
+    document.querySelectorAll(".category");
 
-    pizzas: [
-
-        {
-            name: "Calabresa Especial",
-            description:
-                "Mussarela, calabresa, cebola e orégano.",
-            price: 42.90,
-            icon: "🍕"
-        },
+const products =
+    document.querySelectorAll(".product");
 
 
-        {
-            name: "Frango com Catupiry",
-            description:
-                "Frango temperado, mussarela e catupiry.",
-            price: 49.90,
-            icon: "🍗"
-        },
+categories.forEach(category => {
+
+    category.addEventListener("click", () => {
+
+        categories.forEach(item => {
+
+            item.classList.remove("active");
+
+        });
 
 
-        {
-            name: "Portuguesa",
-            description:
-                "Mussarela, presunto, ovo, cebola e orégano.",
-            price: 47.90,
-            icon: "🍕"
-        },
+        category.classList.add("active");
 
 
-        {
-            name: "Mussarela",
-            description:
-                "Mussarela, tomate e orégano.",
-            price: 39.90,
-            icon: "🧀"
-        },
+        const selected =
+            category.dataset.category;
 
 
-        {
-            name: "Bacon",
-            description:
-                "Mussarela, bacon crocante e orégano.",
-            price: 46.90,
-            icon: "🥓"
-        },
+        products.forEach(product => {
 
+            if (
+                selected === "todos" ||
+                product.dataset.category === selected
+            ) {
 
-        {
-            name: "4 Queijos",
-            description:
-                "Uma combinação cremosa de queijos.",
-            price: 49.90,
-            icon: "🧀"
-        }
+                product.style.display = "block";
 
-    ],
+            } else {
 
+                product.style.display = "none";
 
+            }
 
-    hamburgueres: [
+        });
 
-        {
-            name: "Schuelter Burger",
-            description:
-                "Hambúrguer artesanal, queijo, molho especial e salada.",
-            price: 29.90,
-            icon: "🍔"
-        },
+    });
 
-
-        {
-            name: "X-Bacon",
-            description:
-                "Hambúrguer, queijo, bacon e molho especial.",
-            price: 32.90,
-            icon: "🥓"
-        },
-
-
-        {
-            name: "X-Frango",
-            description:
-                "Frango, queijo, salada e molho especial.",
-            price: 29.90,
-            icon: "🍔"
-        }
-
-    ],
-
-
-
-    bebidas: [
-
-        {
-            name: "Coca-Cola",
-            description:
-                "Refrigerante geladinho.",
-            price: 8.00,
-            icon: "🥤"
-        },
-
-
-        {
-            name: "Guaraná",
-            description:
-                "Refrigerante geladinho.",
-            price: 8.00,
-            icon: "🥤"
-        },
-
-
-        {
-            name: "Água",
-            description:
-                "Água mineral.",
-            price: 4.00,
-            icon: "💧"
-        }
-
-    ],
-
-
-
-    sobremesas: [
-
-        {
-            name: "Brigadeiro",
-            description:
-                "Doce cremoso de chocolate.",
-            price: 8.00,
-            icon: "🍫"
-        },
-
-
-        {
-            name: "Brownie",
-            description:
-                "Brownie de chocolate.",
-            price: 12.00,
-            icon: "🍫"
-        },
-
-
-        {
-            name: "Sobremesa da Casa",
-            description:
-                "Consulte as opções disponíveis.",
-            price: 10.00,
-            icon: "🍰"
-        }
-
-    ]
-
-};
-
+});
 
 
 /* =========================================
    CARRINHO
 ========================================= */
 
-let cart = [];
+let cart =
+    JSON.parse(
+        localStorage.getItem(
+            "schuelterCart"
+        )
+    ) || [];
 
 
-
-/* =========================================
-   ELEMENTOS
-========================================= */
-
-const menuGrid =
-    document.getElementById("menuGrid");
+const cartButton =
+    document.getElementById("cartButton");
 
 const cartElement =
     document.getElementById("cart");
+
+const closeCart =
+    document.getElementById("closeCart");
 
 const overlay =
     document.getElementById("overlay");
@@ -215,16 +112,263 @@ const overlay =
 const cartItems =
     document.getElementById("cartItems");
 
-const cartTotal =
-    document.getElementById("cartTotal");
-
 const cartCount =
     document.getElementById("cartCount");
 
+const cartTotal =
+    document.getElementById("cartTotal");
+
+
+/* ABRIR */
+
+cartButton.addEventListener("click", () => {
+
+    cartElement.classList.add("open");
+
+    overlay.classList.add("active");
+
+});
+
+
+/* FECHAR */
+
+function closeCartFunction() {
+
+    cartElement.classList.remove("open");
+
+    overlay.classList.remove("active");
+
+}
+
+
+closeCart.addEventListener(
+    "click",
+    closeCartFunction
+);
+
+
+overlay.addEventListener(
+    "click",
+    closeCartFunction
+);
 
 
 /* =========================================
-   FORMATAÇÃO
+   ADICIONAR AO CARRINHO
+========================================= */
+
+document
+    .querySelectorAll(".add-cart")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const name =
+                    button.dataset.name;
+
+                const price =
+                    Number(
+                        button.dataset.price
+                    );
+
+
+                const existing =
+                    cart.find(
+                        item =>
+                            item.name === name
+                    );
+
+
+                if (existing) {
+
+                    existing.quantity++;
+
+                } else {
+
+                    cart.push({
+
+                        name: name,
+
+                        price: price,
+
+                        quantity: 1
+
+                    });
+
+                }
+
+
+                saveCart();
+
+                renderCart();
+
+                showToast(
+                    `${name} adicionada ao carrinho 🍕`
+                );
+
+            }
+        );
+
+    });
+
+
+/* =========================================
+   RENDER CARRINHO
+========================================= */
+
+function renderCart() {
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+            <div class="empty">
+
+                <span>
+                    🍕
+                </span>
+
+                <p>
+                    Seu carrinho está vazio.
+                </p>
+
+                <small>
+                    Escolha uma pizza deliciosa!
+                </small>
+
+            </div>
+
+        `;
+
+    } else {
+
+        cartItems.innerHTML = "";
+
+
+        cart.forEach((item, index) => {
+
+            const element =
+                document.createElement("div");
+
+
+            element.className =
+                "cart-item";
+
+
+            element.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <span class="cart-item-price">
+                        ${money(item.price)}
+                    </span>
+
+                </div>
+
+
+                <div class="cart-controls">
+
+                    <button
+                        onclick="changeQuantity(${index}, -1)"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+                    <button
+                        onclick="changeQuantity(${index}, 1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            `;
+
+
+            cartItems.appendChild(element);
+
+        });
+
+    }
+
+
+    const quantity =
+        cart.reduce(
+            (total, item) =>
+                total + item.quantity,
+            0
+        );
+
+
+    const total =
+        cart.reduce(
+            (total, item) =>
+                total +
+                item.price *
+                item.quantity,
+            0
+        );
+
+
+    cartCount.textContent =
+        quantity;
+
+
+    cartTotal.textContent =
+        money(total);
+
+}
+
+
+/* =========================================
+   ALTERAR QUANTIDADE
+========================================= */
+
+function changeQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    saveCart();
+
+    renderCart();
+
+}
+
+
+/* =========================================
+   SALVAR CARRINHO
+========================================= */
+
+function saveCart() {
+
+    localStorage.setItem(
+        "schuelterCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+/* =========================================
+   DINHEIRO
 ========================================= */
 
 function money(value) {
@@ -240,541 +384,35 @@ function money(value) {
 }
 
 
-
-/* =========================================
-   RENDERIZAR CARDÁPIO
-========================================= */
-
-function renderMenu(category = "pizzas") {
-
-    menuGrid.innerHTML = "";
-
-
-    menu[category].forEach(
-        (item, index) => {
-
-            const card =
-                document.createElement("article");
-
-
-            card.className =
-                "menu-item";
-
-
-            card.innerHTML = `
-
-                <div class="menu-icon">
-                    ${item.icon}
-                </div>
-
-
-                <div class="menu-item-info">
-
-                    <h3>
-                        ${item.name}
-                    </h3>
-
-
-                    <p>
-                        ${item.description}
-                    </p>
-
-
-                    <div class="menu-item-bottom">
-
-                        <span class="menu-price">
-                            ${money(item.price)}
-                        </span>
-
-
-                        <button
-                            class="menu-add"
-                            data-category="${category}"
-                            data-index="${index}"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-            `;
-
-
-            menuGrid.appendChild(card);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================
-   CATEGORIAS
-========================================= */
-
-document
-    .querySelectorAll(".category")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                document
-                    .querySelectorAll(".category")
-                    .forEach(btn => {
-
-                        btn.classList.remove(
-                            "active"
-                        );
-
-                    });
-
-
-                button.classList.add(
-                    "active"
-                );
-
-
-                renderMenu(
-                    button.dataset.category
-                );
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================
-   ADICIONAR PRODUTO
-========================================= */
-
-document.addEventListener(
-    "click",
-    event => {
-
-        if (
-            !event.target.classList.contains(
-                "menu-add"
-            )
-        ) {
-            return;
-        }
-
-
-        const category =
-            event.target.dataset.category;
-
-
-        const index =
-            Number(
-                event.target.dataset.index
-            );
-
-
-        addToCart(
-            menu[category][index]
-        );
-
-    }
-);
-
-
-
-/* =========================================
-   BOTÕES DOS DESTAQUES
-========================================= */
-
-document
-    .querySelectorAll(".add-button")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                addToCart({
-
-                    name:
-                        button.dataset.name,
-
-                    price:
-                        Number(
-                            button.dataset.price
-                        ),
-
-                    icon:
-                        "🍕"
-
-                });
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================
-   ADICIONAR AO CARRINHO
-========================================= */
-
-function addToCart(item) {
-
-    const existing =
-        cart.find(
-            product =>
-                product.name === item.name
-        );
-
-
-    if (existing) {
-
-        existing.quantity++;
-
-    }
-
-    else {
-
-        cart.push({
-
-            ...item,
-
-            quantity: 1
-
-        });
-
-    }
-
-
-    updateCart();
-
-    openCart();
-
-
-    /* pequena animação */
-
-    const button =
-        document.getElementById(
-            "floatingCart"
-        );
-
-
-    button.animate(
-        [
-            {
-                transform:
-                    "scale(1)"
-            },
-
-            {
-                transform:
-                    "scale(1.25)"
-            },
-
-            {
-                transform:
-                    "scale(1)"
-            }
-        ],
-        {
-            duration: 350
-        }
-    );
-
-}
-
-
-
-/* =========================================
-   ATUALIZAR CARRINHO
-========================================= */
-
-function updateCart() {
-
-    if (cart.length === 0) {
-
-        cartItems.innerHTML = `
-
-            <div class="empty-cart">
-
-                <div>
-                    🍕
-                </div>
-
-                <p>
-                    Seu carrinho está vazio.
-                </p>
-
-                <small>
-                    Adicione uma pizza deliciosa!
-                </small>
-
-            </div>
-
-        `;
-
-    }
-
-    else {
-
-        cartItems.innerHTML = "";
-
-
-        cart.forEach(
-            (item, index) => {
-
-                const element =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                element.className =
-                    "cart-item";
-
-
-                element.innerHTML = `
-
-                    <div class="menu-icon">
-                        ${item.icon}
-                    </div>
-
-
-                    <div class="cart-item-info">
-
-                        <strong>
-                            ${item.name}
-                        </strong>
-
-
-                        <div class="cart-item-price">
-
-                            ${money(
-                                item.price *
-                                item.quantity
-                            )}
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="quantity">
-
-                        <button
-                            onclick="changeQuantity(${index}, -1)"
-                        >
-                            −
-                        </button>
-
-
-                        <strong>
-                            ${item.quantity}
-                        </strong>
-
-
-                        <button
-                            onclick="changeQuantity(${index}, 1)"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                cartItems.appendChild(
-                    element
-                );
-
-            }
-        );
-
-    }
-
-
-
-    const total =
-        cart.reduce(
-            (sum, item) =>
-                sum +
-                item.price *
-                item.quantity,
-            0
-        );
-
-
-    const quantity =
-        cart.reduce(
-            (sum, item) =>
-                sum +
-                item.quantity,
-            0
-        );
-
-
-    cartTotal.textContent =
-        money(total);
-
-
-    cartCount.textContent =
-        quantity;
-
-}
-
-
-
-/* =========================================
-   ALTERAR QUANTIDADE
-========================================= */
-
-function changeQuantity(
-    index,
-    amount
-) {
-
-    cart[index].quantity +=
-        amount;
-
-
-    if (
-        cart[index].quantity <= 0
-    ) {
-
-        cart.splice(
-            index,
-            1
-        );
-
-    }
-
-
-    updateCart();
-
-}
-
-
-
-/* =========================================
-   ABRIR CARRINHO
-========================================= */
-
-function openCart() {
-
-    cartElement.classList.add(
-        "open"
-    );
-
-
-    overlay.classList.add(
-        "active"
-    );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-
-/* =========================================
-   FECHAR CARRINHO
-========================================= */
-
-function closeCart() {
-
-    cartElement.classList.remove(
-        "open"
-    );
-
-
-    overlay.classList.remove(
-        "active"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-
-document
-    .getElementById("floatingCart")
-    .addEventListener(
-        "click",
-        openCart
-    );
-
-
-document
-    .getElementById("closeCart")
-    .addEventListener(
-        "click",
-        closeCart
-    );
-
-
-overlay.addEventListener(
-    "click",
-    closeCart
-);
-
-
-
 /* =========================================
    WHATSAPP
 ========================================= */
 
 document
-    .getElementById("checkoutButton")
+    .getElementById("finishOrder")
     .addEventListener(
         "click",
         () => {
 
             if (cart.length === 0) {
 
-                alert(
-                    "Seu carrinho está vazio! 🍕"
+                showToast(
+                    "Seu carrinho está vazio 🍕"
                 );
 
                 return;
 
             }
-
-
-            if (
-                WHATSAPP ===
-                "COLOQUE_NUMERO_AQUI"
-            ) {
-
-                alert(
-                    "Configure o número do WhatsApp no arquivo script.js."
-                );
-
-                return;
-
-            }
-
 
 
             let message =
-                "🍕 *NOVO PEDIDO - PIZZARIA SCHUELTER*%0A%0A";
+                "🍕 *PEDIDO - PIZZARIA SCHUELTER*%0A%0A";
 
 
             cart.forEach(item => {
 
                 message +=
-                    `• ${item.quantity}x ${item.name} - ${money(item.price * item.quantity)}%0A`;
+                    `• ${item.quantity}x ${item.name}%0A`;
 
             });
 
@@ -790,7 +428,7 @@ document
 
 
             message +=
-                `%0A💰 *TOTAL: ${money(total)}*`;
+                `%0A💰 *Total: ${money(total)}*`;
 
 
             message +=
@@ -798,7 +436,8 @@ document
 
 
             const url =
-                `https://wa.me/${WHATSAPP}?text=${message}`;
+                "https://wa.me/5543996366774?text=" +
+                message;
 
 
             window.open(
@@ -810,123 +449,424 @@ document
     );
 
 
-
 /* =========================================
-   MENU MOBILE
+   MODAL LOGIN / CADASTRO
 ========================================= */
 
-const menuButton =
-    document.getElementById(
-        "menuButton"
-    );
+const authModal =
+    document.getElementById("authModal");
+
+const openAuth =
+    document.getElementById("openAuth");
+
+const closeAuth =
+    document.getElementById("closeAuth");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const showRegister =
+    document.getElementById("showRegister");
+
+const showLogin =
+    document.getElementById("showLogin");
 
 
-const mobileMenu =
-    document.getElementById(
-        "mobileMenu"
-    );
+/* ABRIR */
 
-
-menuButton.addEventListener(
+openAuth.addEventListener(
     "click",
     () => {
 
-        mobileMenu.classList.toggle(
-            "open"
+        authModal.classList.add("active");
+
+        showLoginForm();
+
+    }
+);
+
+
+/* FECHAR */
+
+closeAuth.addEventListener(
+    "click",
+    () => {
+
+        authModal.classList.remove("active");
+
+    }
+);
+
+
+/* CLICAR FORA */
+
+authModal.addEventListener(
+    "click",
+    event => {
+
+        if (
+            event.target === authModal
+        ) {
+
+            authModal.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   TROCAR LOGIN / CADASTRO
+========================================= */
+
+showRegister.addEventListener(
+    "click",
+    showRegisterForm
+);
+
+
+showLogin.addEventListener(
+    "click",
+    showLoginForm
+);
+
+
+function showRegisterForm() {
+
+    loginForm.classList.add(
+        "hidden"
+    );
+
+    registerForm.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+function showLoginForm() {
+
+    registerForm.classList.add(
+        "hidden"
+    );
+
+    loginForm.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+/* =========================================
+   CADASTRO
+========================================= */
+
+registerForm.addEventListener(
+    "submit",
+    event => {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "registerName"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "registerPhone"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "registerEmail"
+            ).value.trim();
+
+
+        const address =
+            document.getElementById(
+                "registerAddress"
+            ).value.trim();
+
+
+        const password =
+            document.getElementById(
+                "registerPassword"
+            ).value;
+
+
+        if (password.length < 6) {
+
+            showToast(
+                "A senha precisa ter pelo menos 6 caracteres."
+            );
+
+            return;
+
+        }
+
+
+        let users =
+            JSON.parse(
+                localStorage.getItem(
+                    "schuelterUsers"
+                )
+            ) || [];
+
+
+        const exists =
+            users.some(
+                user =>
+                    user.email.toLowerCase() ===
+                    email.toLowerCase()
+            );
+
+
+        if (exists) {
+
+            showToast(
+                "Esse e-mail já está cadastrado."
+            );
+
+            return;
+
+        }
+
+
+        users.push({
+
+            name,
+            phone,
+            email,
+            address,
+            password
+
+        });
+
+
+        localStorage.setItem(
+            "schuelterUsers",
+            JSON.stringify(users)
+        );
+
+
+        localStorage.setItem(
+            "schuelterLoggedUser",
+            JSON.stringify({
+                name,
+                email
+            })
+        );
+
+
+        registerForm.reset();
+
+
+        authModal.classList.remove(
+            "active"
+        );
+
+
+        updateAccountButton();
+
+
+        showToast(
+            `Cadastro realizado! Bem-vindo, ${name.split(" ")[0]} 🍕`
         );
 
     }
 );
 
 
+/* =========================================
+   LOGIN
+========================================= */
 
-/* Fecha menu ao clicar */
+loginForm.addEventListener(
+    "submit",
+    event => {
 
-document
-    .querySelectorAll(
-        ".mobile-menu a"
-    )
-    .forEach(link => {
+        event.preventDefault();
 
-        link.addEventListener(
-            "click",
-            () => {
 
-                mobileMenu.classList.remove(
-                    "open"
-                );
+        const email =
+            document.getElementById(
+                "loginEmail"
+            ).value.trim();
 
-            }
+
+        const password =
+            document.getElementById(
+                "loginPassword"
+            ).value;
+
+
+        const users =
+            JSON.parse(
+                localStorage.getItem(
+                    "schuelterUsers"
+                )
+            ) || [];
+
+
+        const user =
+            users.find(
+                item =>
+                    item.email.toLowerCase() ===
+                        email.toLowerCase() &&
+                    item.password === password
+            );
+
+
+        if (!user) {
+
+            showToast(
+                "E-mail ou senha incorretos."
+            );
+
+            return;
+
+        }
+
+
+        localStorage.setItem(
+            "schuelterLoggedUser",
+            JSON.stringify({
+                name: user.name,
+                email: user.email
+            })
         );
 
-    });
 
+        loginForm.reset();
+
+
+        authModal.classList.remove(
+            "active"
+        );
+
+
+        updateAccountButton();
+
+
+        showToast(
+            `Bem-vindo de volta, ${user.name.split(" ")[0]}! 🍕`
+        );
+
+    }
+);
 
 
 /* =========================================
-   ANIMAÇÕES AO ROLAR
+   BOTÃO DA CONTA
 ========================================= */
 
-const observer =
-    new IntersectionObserver(
-        entries => {
+function updateAccountButton() {
 
-            entries.forEach(
-                entry => {
+    const user =
+        JSON.parse(
+            localStorage.getItem(
+                "schuelterLoggedUser"
+            )
+        );
 
-                    if (
-                        entry.isIntersecting
-                    ) {
 
-                        entry.target.style.opacity =
-                            "1";
+    if (user) {
 
-                        entry.target.style.transform =
-                            "translateY(0)";
+        openAuth.textContent =
+            `👋 ${user.name.split(" ")[0]}`;
 
-                    }
+    } else {
 
-                }
-            );
+        openAuth.textContent =
+            "👤 Cadastro";
 
-        },
-        {
-            threshold: .1
-        }
+    }
+
+}
+
+
+updateAccountButton();
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+const toast =
+    document.getElementById("toast");
+
+const toastText =
+    document.getElementById("toastText");
+
+
+let toastTimeout;
+
+
+function showToast(message) {
+
+    toastText.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
     );
 
 
-
-document
-    .querySelectorAll(
-        ".featured-card, .menu-item, .about-content, .hours-card"
-    )
-    .forEach(element => {
-
-        element.style.opacity =
-            "0";
+    clearTimeout(
+        toastTimeout
+    );
 
 
-        element.style.transform =
-            "translateY(25px)";
+    toastTimeout =
+        setTimeout(
+            () => {
 
+                toast.classList.remove(
+                    "show"
+                );
 
-        element.style.transition =
-            "opacity .7s ease, transform .7s ease";
-
-
-        observer.observe(
-            element
+            },
+            2500
         );
 
-    });
+}
 
+
+/* =========================================
+   ESC
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+
+            closeCartFunction();
+
+            authModal.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+);
 
 
 /* =========================================
    INICIAR
 ========================================= */
 
-renderMenu("pizzas");
-
-updateCart();
+renderCart();
